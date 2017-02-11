@@ -14,26 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet var fishyz: UIButton!
     @IBOutlet var img: UIImageView!
     
-    var xrect = 0.0
-    var yrect = 100.0
-    var wrect = 50.0
-    var hrect = 50.0
-    var i = 0
+    let fish1 = [#imageLiteral(resourceName: "Hfish"),#imageLiteral(resourceName: "Ffish"),#imageLiteral(resourceName: "Lfish"),#imageLiteral(resourceName: "MrUniWhale"),#imageLiteral(resourceName: "Ducky"),#imageLiteral(resourceName: "Ofish"),#imageLiteral(resourceName: "Dolphin"),#imageLiteral(resourceName: "Sfish")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        let vwSq = UIView()
-        vwSq.backgroundColor = UIColor.blue
-        vwSq.frame = CGRect(x: xrect, y: yrect, width: wrect, height: hrect)
-        self.view.addSubview(vwSq)
-        
-        UIView.animate(withDuration: 5.0, delay: 1.0, options:[UIViewAnimationOptions.repeat, UIViewAnimationOptions.autoreverse], animations: {
-            vwSq.backgroundColor = UIColor.yellow
-            vwSq.frame = CGRect(x: self.xrect + 364, y: self.yrect, width: self.wrect , height: self.hrect)
-            
-        }, completion: nil)
-        
         }
     
     
@@ -42,7 +26,36 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    @IBAction func animateFish(_ sender:Any){
+         let NumOfFish = Int(roundf(self.slider.value))
+        
+        for fishNum in 1...NumOfFish{
+            
+            let wfish = (Int(arc4random() % 10) + 1) * 20
+            let hfish = (wfish * 3) / 4
+            let xStart = 0 - wfish
+            let xEnd = 380 + wfish
+            let ypos = Int(arc4random() % 200) + wfish
+            let n = (Int(arc4random() % 8))
+            
+            let aDur = Double(arc4random() % 10)
+            let aDly = Double(arc4random() % 2)
+            
+            let fish = UIImageView()
+            fish.image = fish1[n]
+            
+            fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
+            self.view.addSubview(fish)
+            
+            UIView.animate(withDuration: aDur, delay: aDly, options: UIViewAnimationOptions.curveLinear, animations: {
+                
+                fish.frame = CGRect(x: xEnd, y: ypos, width: wfish, height: hfish)
+                
+        }, completion: { animationFinished in fish.removeFromSuperview()
+            })
+            
+        }
+    }
 
 }
 
