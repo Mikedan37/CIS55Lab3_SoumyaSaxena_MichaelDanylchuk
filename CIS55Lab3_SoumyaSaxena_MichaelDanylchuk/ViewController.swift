@@ -26,8 +26,9 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func animateFish(_ sender:Any){
-         let NumOfFish = Int(roundf(self.slider.value))
+    
+    @IBAction func fishyz(_ sender: Any) {
+        let NumOfFish = Int(round(self.slider!.value))
         
         for fishNum in 1...NumOfFish{
             
@@ -47,15 +48,15 @@ class ViewController: UIViewController {
             fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
             self.view.addSubview(fish)
             
-            UIView.animate(withDuration: aDur, delay: aDly, options: UIViewAnimationOptions.curveLinear, animations: {
+            UIView.animate(withDuration: aDur, delay: aDly, options: [UIViewAnimationOptions.repeat, UIViewAnimationOptions.autoreverse], animations: {
                 
                 fish.frame = CGRect(x: xEnd, y: ypos, width: wfish, height: hfish)
                 
-        }, completion: { animationFinished in fish.removeFromSuperview()
+            }, completion: { animationFinished in fish.removeFromSuperview()
             })
             
         }
-    }
 
-}
+    }
+  }
 
