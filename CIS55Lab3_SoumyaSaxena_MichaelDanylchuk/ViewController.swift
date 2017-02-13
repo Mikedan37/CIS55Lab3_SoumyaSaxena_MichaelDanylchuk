@@ -27,8 +27,8 @@ class ViewController: UIViewController {
     
     func showBubbles() {
         let bubbleImage = UIImage(named: "Bubble3")
-        var bubbleStartEndX = 100
-        let bubbleStartY = 1000
+        let bubbleStartEndX = Int(arc4random()) % Int(self.view.bounds.width)
+        let bubbleStartY = Int(self.view.bounds.height)
         let bubbleStartDimension = 20
         let bubbleEndY = -20
         let bubbleEndDimension = 30
@@ -39,13 +39,13 @@ class ViewController: UIViewController {
         bubbleImageView.contentMode = .scaleAspectFit
         self.view.addSubview(bubbleImageView)
         
-        UIView.animate(withDuration: 3, delay: 0, options: [.repeat,.curveLinear,.curveEaseIn], animations: {
+        UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear,.curveEaseIn], animations: {
             
             bubbleImageView.frame = CGRect(x: bubbleStartEndX, y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
-            print("end")
 
         }, completion: { animationFinished in
-            print("end")
+            bubbleImageView.removeFromSuperview()
+            self.showBubbles()
         })
     }
     
