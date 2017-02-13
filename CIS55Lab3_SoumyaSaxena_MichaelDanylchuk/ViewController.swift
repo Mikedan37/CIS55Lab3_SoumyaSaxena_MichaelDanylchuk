@@ -21,8 +21,47 @@ class ViewController: UIViewController {
         
         // Setting background color using an image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
+        
+        showBubbles()
     }
     
+    func showBubbles() {
+        var bubbles: [UIImageView] = []
+        
+        let bubbleImage = UIImage(named: "Bubble3")
+        let bubbleStartDimension = 20
+        let bubbleEndY = -20
+        let bubbleEndDimension = 30
+        let bubbleCount = 18
+        for _ in 0...bubbleCount {
+            let bubbleStartEndX = Int(arc4random()) % Int(self.view.bounds.width)
+            let bubbleStartY = Int(arc4random()) % Int(self.view.bounds.height)
+
+            let bubbleImageView = UIImageView(frame: CGRect(x: bubbleStartEndX, y: bubbleStartY, width: bubbleStartDimension, height: bubbleStartDimension))
+            
+            bubbleImageView.image = bubbleImage
+            bubbleImageView.contentMode = .scaleAspectFit
+            self.view.addSubview(bubbleImageView)
+
+            bubbles.append(bubbleImageView)
+        }
+        
+        UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear,.curveEaseIn], animations: {
+            
+            for bubble in bubbles {
+                bubble.frame = CGRect(x: Int(bubble.frame.origin.x), y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
+            }
+            //bubbleImageView.frame = CGRect(x: bubbleImageView.frame.origin.x, y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
+
+        }, completion: { animationFinished in
+            
+            for bubble in bubbles {
+                bubble.removeFromSuperview()
+            }
+
+            self.showBubbles()
+        })
+    }
     
 
     override func didReceiveMemoryWarning() {
