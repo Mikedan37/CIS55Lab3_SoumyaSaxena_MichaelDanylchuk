@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet var fishyz: UIButton!
     @IBOutlet var img: UIImageView!
     
-    let fish1 = [#imageLiteral(resourceName: "Hfish"),#imageLiteral(resourceName: "Ffish"),#imageLiteral(resourceName: "Lfish"),#imageLiteral(resourceName: "MrUniWhale"),#imageLiteral(resourceName: "Ducky"),#imageLiteral(resourceName: "Ofish"),#imageLiteral(resourceName: "Dolphin"),#imageLiteral(resourceName: "Sfish")]
+    let fish1 = #imageLiteral(resourceName: "Dolphin")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +69,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func Kill(_ sender: Any) {
+    super.loadView()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
+        
+        showBubbles()
+    }
+    
     @IBAction func fishyz(_ sender: Any) {
         let NumOfFish = Int(round(self.slider!.value))
         
@@ -85,7 +92,7 @@ class ViewController: UIViewController {
             let aDly = Double(arc4random() % 2)
             
             let fish = UIImageView()
-            fish.image = fish1[n]
+            fish.image = fish1
             
             fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
             self.view.addSubview(fish)
