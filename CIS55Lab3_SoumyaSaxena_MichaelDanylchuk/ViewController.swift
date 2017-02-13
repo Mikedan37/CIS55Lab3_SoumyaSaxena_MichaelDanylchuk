@@ -21,8 +21,33 @@ class ViewController: UIViewController {
         
         // Setting background color using an image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
+        
+        showBubbles()
     }
     
+    func showBubbles() {
+        let bubbleImage = UIImage(named: "Bubble3")
+        var bubbleStartEndX = 100
+        let bubbleStartY = 1000
+        let bubbleStartDimension = 20
+        let bubbleEndY = -20
+        let bubbleEndDimension = 30
+        
+        let bubbleImageView = UIImageView(frame: CGRect(x: bubbleStartEndX, y: bubbleStartY, width: bubbleStartDimension, height: bubbleStartDimension))
+        
+        bubbleImageView.image = bubbleImage
+        bubbleImageView.contentMode = .scaleAspectFit
+        self.view.addSubview(bubbleImageView)
+        
+        UIView.animate(withDuration: 3, delay: 0, options: [.repeat,.curveLinear,.curveEaseIn], animations: {
+            
+            bubbleImageView.frame = CGRect(x: bubbleStartEndX, y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
+            print("end")
+
+        }, completion: { animationFinished in
+            print("end")
+        })
+    }
     
 
     override func didReceiveMemoryWarning() {
