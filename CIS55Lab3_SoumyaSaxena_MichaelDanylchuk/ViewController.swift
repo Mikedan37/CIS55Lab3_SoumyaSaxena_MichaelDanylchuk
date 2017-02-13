@@ -26,25 +26,39 @@ class ViewController: UIViewController {
     }
     
     func showBubbles() {
+        var bubbles: [UIImageView] = []
+        
         let bubbleImage = UIImage(named: "Bubble3")
-        let bubbleStartEndX = Int(arc4random()) % Int(self.view.bounds.width)
-        let bubbleStartY = Int(self.view.bounds.height)
         let bubbleStartDimension = 20
         let bubbleEndY = -20
         let bubbleEndDimension = 30
-        
-        let bubbleImageView = UIImageView(frame: CGRect(x: bubbleStartEndX, y: bubbleStartY, width: bubbleStartDimension, height: bubbleStartDimension))
-        
-        bubbleImageView.image = bubbleImage
-        bubbleImageView.contentMode = .scaleAspectFit
-        self.view.addSubview(bubbleImageView)
+        let bubbleCount = 18
+        for _ in 0...bubbleCount {
+            let bubbleStartEndX = Int(arc4random()) % Int(self.view.bounds.width)
+            let bubbleStartY = Int(arc4random()) % Int(self.view.bounds.height)
+
+            let bubbleImageView = UIImageView(frame: CGRect(x: bubbleStartEndX, y: bubbleStartY, width: bubbleStartDimension, height: bubbleStartDimension))
+            
+            bubbleImageView.image = bubbleImage
+            bubbleImageView.contentMode = .scaleAspectFit
+            self.view.addSubview(bubbleImageView)
+
+            bubbles.append(bubbleImageView)
+        }
         
         UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear,.curveEaseIn], animations: {
             
-            bubbleImageView.frame = CGRect(x: bubbleStartEndX, y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
+            for bubble in bubbles {
+                bubble.frame = CGRect(x: Int(bubble.frame.origin.x), y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
+            }
+            //bubbleImageView.frame = CGRect(x: bubbleImageView.frame.origin.x, y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
 
         }, completion: { animationFinished in
-            bubbleImageView.removeFromSuperview()
+            
+            for bubble in bubbles {
+                bubble.removeFromSuperview()
+            }
+
             self.showBubbles()
         })
     }
