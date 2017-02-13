@@ -18,7 +18,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        }
+        
+        // Setting background color using an image
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
+    }
     
     
 
