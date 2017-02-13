@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         
         // Setting background color using an image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
-        
         showBubbles()
     }
     
@@ -51,13 +50,11 @@ class ViewController: UIViewController {
             for bubble in bubbles {
                 bubble.frame = CGRect(x: Int(bubble.frame.origin.x), y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
             }
-            //bubbleImageView.frame = CGRect(x: bubbleImageView.frame.origin.x, y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
-
-        }, completion: { animationFinished in
+                    }, completion: { animationFinished in
             
-            for bubble in bubbles {
-                bubble.removeFromSuperview()
-            }
+           for bubble in bubbles {
+                        bubble.removeFromSuperview()
+           }
 
             self.showBubbles()
         })
