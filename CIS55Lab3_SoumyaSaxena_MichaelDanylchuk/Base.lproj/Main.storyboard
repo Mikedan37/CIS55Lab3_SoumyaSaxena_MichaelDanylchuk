@@ -21,15 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fjl-9M-wCW">
-                                <rect key="frame" x="128" y="518" width="118" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.03650052472949028" green="0.97351545095443726" blue="0.28259366750717163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyx-Kw-yY9">
                                 <rect key="frame" x="140" y="556" width="95" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99840980768203735" green="0.37005969882011414" blue="0.012874181382358074" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.99840980768203735" green="0.37005969882011414" blue="0.012874181382358074" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="More fishyz??"/>
                                 <connections>
                                     <action selector="fishyz:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Lg-1g-5X7"/>
