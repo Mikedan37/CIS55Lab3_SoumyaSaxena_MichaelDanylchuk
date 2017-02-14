@@ -10,9 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
  
+   
     @IBOutlet var slider: UISlider!
     @IBOutlet var fishyz: UIButton!
-    @IBOutlet var img: UIImageView!
+    @IBOutlet var Kill: UIButton!
     
     let fish1 = #imageLiteral(resourceName: "Dolphin")
     
@@ -66,12 +67,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func Kill(_ sender: Any) {
-    super.loadView()
+    
+    @IBAction func kill(_ sender: Any) {
+          super.loadView()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
         
         showBubbles()
+ 
     }
+  
     
     @IBAction func fishyz(_ sender: Any) {
         let NumOfFish = Int(round(self.slider!.value))

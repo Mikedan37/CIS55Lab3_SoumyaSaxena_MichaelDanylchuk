@@ -58,12 +58,25 @@
                                 <rect key="frame" x="119" y="382" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="urC-n1-c5H">
+                                <rect key="frame" x="128" y="496" width="118" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJF-at-Fw1">
+                                <rect key="frame" x="172" y="527" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Kill"/>
+                                <connections>
+                                    <action selector="kill:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Pa-ch-NEw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="Kill" destination="RJF-at-Fw1" id="ILh-6d-ejb"/>
                         <outlet property="fishyz" destination="nyx-Kw-yY9" id="NOk-Wh-4Nl"/>
-                        <outlet property="slider" destination="Fjl-9M-wCW" id="V8v-bx-QVo"/>
+                        <outlet property="slider" destination="urC-n1-c5H" id="G84-5W-1iH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
