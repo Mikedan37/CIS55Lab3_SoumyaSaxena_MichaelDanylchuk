@@ -99,8 +99,15 @@ class ViewController: UIViewController {
 
             
             
-            let fish = UIImageView()
-            fish.image = fish1
+                let wfish = (Int(arc4random() % 10) + 1) * 20
+                let hfish = (wfish * 3) / 4
+                var xStart = 0 - wfish
+                let xEnd = 380 + wfish
+                let ypos = Int(arc4random() % 200) + wfish
+                let n = (Int(arc4random() % 4))
+                
+                let aDur = Double(arc4random() % 10)
+                let aDly = Double(arc4random() % 2)
             
             fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
             self.view.addSubview(fish)

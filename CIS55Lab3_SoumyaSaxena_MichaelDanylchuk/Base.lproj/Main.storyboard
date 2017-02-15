@@ -65,7 +65,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJF-at-Fw1">
                                 <rect key="frame" x="172" y="527" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Kill"/>
+                                <state key="normal" title="Kill">
+                                    <color key="titleColor" red="0.97351545095443726" green="0.21378904886092778" blue="0.35671471746022321" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="kill:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Pa-ch-NEw"/>
                                 </connections>
