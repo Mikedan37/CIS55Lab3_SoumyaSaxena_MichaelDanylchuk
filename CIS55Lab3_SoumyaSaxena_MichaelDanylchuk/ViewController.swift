@@ -3,8 +3,6 @@
 //  CIS55Lab3_SoumyaSaxena_MichaelDanylchuk
 //
 //  Created by Michael Danylchuk on 2/8/17.
-//
-//
 
 import UIKit
 
@@ -14,8 +12,8 @@ enum Direction {
 }
 
 class ViewController: UIViewController {
- 
-   
+    
+    
     @IBOutlet weak var seaweed4: UIImageView!
     @IBOutlet var slider: UISlider!
     @IBOutlet var fishyz: UIButton!
@@ -32,7 +30,7 @@ class ViewController: UIViewController {
         showBubbles()
     }
     
-       
+    
     func showBubbles() {
         var bubbles: [UIImageView] = []
         
@@ -44,13 +42,13 @@ class ViewController: UIViewController {
         for _ in 0...bubbleCount {
             let bubbleStartEndX = Int(arc4random()) % Int(self.view.bounds.width)
             let bubbleStartY = Int(arc4random()) % Int(self.view.bounds.height)
-
+            
             let bubbleImageView = UIImageView(frame: CGRect(x: bubbleStartEndX, y: bubbleStartY, width: bubbleStartDimension, height: bubbleStartDimension))
             
             bubbleImageView.image = bubbleImage
             bubbleImageView.contentMode = .scaleAspectFit
             self.view.addSubview(bubbleImageView)
-
+            
             bubbles.append(bubbleImageView)
         }
         
@@ -59,17 +57,17 @@ class ViewController: UIViewController {
             for bubble in bubbles {
                 bubble.frame = CGRect(x: Int(bubble.frame.origin.x), y: bubbleEndY, width: bubbleEndDimension, height: bubbleEndDimension)
             }
-                    }, completion: { animationFinished in
+        }, completion: { animationFinished in
             
-           for bubble in bubbles {
-                        bubble.removeFromSuperview()
-           }
-
+            for bubble in bubbles {
+                bubble.removeFromSuperview()
+            }
+            
             self.showBubbles()
         })
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,37 +75,30 @@ class ViewController: UIViewController {
     
     
     @IBAction func kill(_ sender: Any) {
-          super.loadView()
+        super.loadView()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "Background")!)
         
         showBubbles()
- 
+        
     }
-  
+    
     
     @IBAction func fishyz(_ sender: Any) {
         
         var newFishArray: [UIImageView] = []
         let NumOfFish = Int(round(self.slider!.value))
-            
+        
         for _ in 1...NumOfFish {
             
             let wfish = (Int(arc4random() % 10) + 1) * 20
             let xStart = 0 - wfish
             let ypos = Int(arc4random() % 200) + wfish
             let hfish = (wfish * 3) / 4
-
             
             
-                let wfish = (Int(arc4random() % 10) + 1) * 20
-                let hfish = (wfish * 3) / 4
-                var xStart = 0 - wfish
-                let xEnd = 380 + wfish
-                let ypos = Int(arc4random() % 200) + wfish
-                let n = (Int(arc4random() % 4))
-                
-                let aDur = Double(arc4random() % 10)
-                let aDly = Double(arc4random() % 2)
+            
+            let fish = UIImageView()
+            fish.image = fish1
             
             fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
             self.view.addSubview(fish)
@@ -115,15 +106,15 @@ class ViewController: UIViewController {
         }
         
         animateFishes(fishes: newFishArray,direction: .goRight)
-
+        
     }
     
     func animateFishes(fishes fishArray: [UIImageView], direction: Direction) {
         
-
-
-
-
+        
+        
+        
+        
         UIView.animate(withDuration: aDur, delay: aDly, options: [], animations: {
             
             if direction == .goRight {
@@ -143,7 +134,7 @@ class ViewController: UIViewController {
                     let hfish = fish.frame.size.height
                     fish.frame = CGRect(x: xEnd, y: yPos, width: wFish, height: hfish)
                     fish.image = UIImage(named: "Dolphin_flip")
-
+                    
                 }
             }
             
@@ -155,14 +146,14 @@ class ViewController: UIViewController {
             
             if direction == .goLeft {
                 self.animateFishes(fishes: fishArray, direction: .goRight)
-
+                
             } else {
                 self.animateFishes(fishes: fishArray, direction: .goLeft)
-
+                
             }
             
         })
         
     }
-  }
+}
 
