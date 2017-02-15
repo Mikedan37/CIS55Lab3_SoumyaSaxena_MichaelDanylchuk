@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "pacfish.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "d2436a99014f1b7d379ee871adad9986_large-cute-puffer-fishpng-cute-fish-transparent-background-clipart_432-432.png",
       "scale" : "2x"
     },
     {

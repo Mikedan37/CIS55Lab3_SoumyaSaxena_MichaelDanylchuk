@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "puffy.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "169ba5ff37f7e05f848c97490702350c_fish-fish-clipart-transparent-background_958-454.png",
       "scale" : "2x"
     },
     {

@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet var fishyz: UIButton!
     @IBOutlet var Kill: UIButton!
     
-    let fish1 = #imageLiteral(resourceName: "Dolphin")
+    let fish1 = [#imageLiteral(resourceName: "eatfish"),#imageLiteral(resourceName: "puffy"), #imageLiteral(resourceName: "goldfish"),#imageLiteral(resourceName: "redfish")]
+    let fish2 = [#imageLiteral(resourceName: "pacfish"),#imageLiteral(resourceName: "Puffyfish"), #imageLiteral(resourceName: "Dolphin copy"),#imageLiteral(resourceName: "red")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,35 +79,106 @@ class ViewController: UIViewController {
   
     
     @IBAction func fishyz(_ sender: Any) {
-        let NumOfFish = Int(round(self.slider!.value))
         
-        for fishNum in 1...NumOfFish{
-            
-            let wfish = (Int(arc4random() % 10) + 1) * 20
-            let hfish = (wfish * 3) / 4
-            let xStart = 0 - wfish
-            let xEnd = 380 + wfish
-            let ypos = Int(arc4random() % 200) + wfish
-            let n = (Int(arc4random() % 8))
-            
-            let aDur = Double(arc4random() % 10)
-            let aDly = Double(arc4random() % 2)
-            
-            let fish = UIImageView()
-            fish.image = fish1
-            
-            fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
-            self.view.addSubview(fish)
-            
-            UIView.animate(withDuration: aDur, delay: aDly, options: [UIViewAnimationOptions.repeat, UIViewAnimationOptions.autoreverse], animations: {
-                
-                fish.frame = CGRect(x: xEnd, y: ypos, width: wfish, height: hfish)
-                
-            }, completion: { animationFinished in fish.removeFromSuperview()
-            })
-            
+//        let NumOfFish = Int(round(self.slider!.value))
+//        
+//        for fishNum in 1...NumOfFish{
+//            
+//            let wfish = (Int(arc4random() % 10) + 1) * 20
+//            let hfish = (wfish * 3) / 4
+//            let xStart = 0 - wfish
+//            let xEnd = 380 + wfish
+//            let ypos = Int(arc4random() % 200) + wfish
+//            let n = (Int(arc4random() % 4))
+//            
+//            let aDur = Double(arc4random() % 10)
+//            let aDly = Double(arc4random() % 2)
+//            
+//            let fish = UIImageView()
+//            fish.image = fish1[n]
+//            
+//            
+//            fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
+//            self.view.addSubview(fish)
+//        }
+                      LtoRfish()
+        
+        
         }
+        
+            func LtoRfish (){
+                
+                let NumOfFish = Int(round(self.slider!.value))
+                
+                for fishNum in 1...NumOfFish{
+                    
+                    let wfish = (Int(arc4random() % 10) + 1) * 20
+                    let hfish = (wfish * 3) / 4
+                    let xStart = 0 - wfish
+                    let xEnd = 380 + wfish
+                    let ypos = Int(arc4random() % 200) + wfish
+                    let n = (Int(arc4random() % 4))
+                    
+                    let aDur = Double(arc4random() % 10)
+                    let aDly = Double(arc4random() % 2)
 
-    }
-  }
+                    let fish = UIImageView()
+                    fish.image = fish1[n]
+
+                    fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
+                    self.view.addSubview(fish)
+                    
+                    UIView.animate(withDuration: aDur, delay: aDly, options: [UIViewAnimationOptions.transitionFlipFromRight,UIViewAnimationOptions.repeat] , animations: {
+                        
+                        
+                  fish.frame = CGRect(x: xEnd, y: ypos, width: wfish, height: hfish)
+                        
+                    },completion: { FinishedAnimation in
+                        fish.removeFromSuperview()
+                    })
+                RtoLfish()
+                    
+                }
+
+            }
+
+            func  RtoLfish(){
+             
+            let NumOfFish = Int(round(self.slider!.value))
+            
+            for fishNum in 1...NumOfFish{
+            
+                let wfish = (Int(arc4random() % 10) + 1) * 20
+                let hfish = (wfish * 3) / 4
+                var xStart = 0 - wfish
+                let xEnd = 380 + wfish
+                let ypos = Int(arc4random() % 200) + wfish
+                let n = (Int(arc4random() % 4))
+                
+                let aDur = Double(arc4random() % 10)
+                let aDly = Double(arc4random() % 2)
+            
+                let fish = UIImageView()
+                fish.image = fish2[n]
+            
+                fish.frame = CGRect( x: xEnd, y: ypos, width: wfish, height: hfish)
+                self.view.addSubview(fish)
+                
+                UIView.animate(withDuration: aDur, delay: aDly, options: [UIViewAnimationOptions.transitionFlipFromRight, UIViewAnimationOptions.repeat] , animations: {
+                    
+                    
+                    fish.frame = CGRect(x: xStart, y: ypos, width: wfish, height: hfish)
+                    
+                    
+                    
+                }, completion: {
+                    finishedanimations in
+                    fish.removeFromSuperview()
+                })
+                
+
+            }
+                }
+}
+
 
