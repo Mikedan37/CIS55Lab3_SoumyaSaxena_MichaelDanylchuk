@@ -8,13 +8,20 @@
 
 import UIKit
 
+enum Direction {
+    case goLeft
+    case goRight
+}
+
 class ViewController: UIViewController {
  
    
+    @IBOutlet weak var seaweed4: UIImageView!
     @IBOutlet var slider: UISlider!
     @IBOutlet var fishyz: UIButton!
     @IBOutlet var Kill: UIButton!
-    
+    let aDur = 2.0
+    let aDly = 0.0
     let fish1 = #imageLiteral(resourceName: "Dolphin")
     
     override func viewDidLoad() {
@@ -25,6 +32,7 @@ class ViewController: UIViewController {
         showBubbles()
     }
     
+       
     func showBubbles() {
         var bubbles: [UIImageView] = []
         
@@ -78,35 +86,76 @@ class ViewController: UIViewController {
   
     
     @IBAction func fishyz(_ sender: Any) {
-        let NumOfFish = Int(round(self.slider!.value))
         
-        for fishNum in 1...NumOfFish{
+        var newFishArray: [UIImageView] = []
+        let NumOfFish = Int(round(self.slider!.value))
+            
+        for _ in 1...NumOfFish {
             
             let wfish = (Int(arc4random() % 10) + 1) * 20
-            let hfish = (wfish * 3) / 4
             let xStart = 0 - wfish
-            let xEnd = 380 + wfish
             let ypos = Int(arc4random() % 200) + wfish
-            let n = (Int(arc4random() % 8))
+            let hfish = (wfish * 3) / 4
+
             
-            let aDur = Double(arc4random() % 10)
-            let aDly = Double(arc4random() % 2)
             
             let fish = UIImageView()
             fish.image = fish1
             
             fish.frame = CGRect( x: xStart, y: ypos, width: wfish, height: hfish)
             self.view.addSubview(fish)
-            
-            UIView.animate(withDuration: aDur, delay: aDly, options: [UIViewAnimationOptions.repeat, UIViewAnimationOptions.autoreverse], animations: {
-                
-                fish.frame = CGRect(x: xEnd, y: ypos, width: wfish, height: hfish)
-                
-            }, completion: { animationFinished in fish.removeFromSuperview()
-            })
-            
+            newFishArray.append(fish)
         }
+        
+        animateFishes(fishes: newFishArray,direction: .goRight)
 
+    }
+    
+    func animateFishes(fishes fishArray: [UIImageView], direction: Direction) {
+        
+
+
+
+
+        UIView.animate(withDuration: aDur, delay: aDly, options: [], animations: {
+            
+            if direction == .goRight {
+                for fish in fishArray {
+                    let xEnd = 380 + fish.frame.size.width
+                    let yPos = fish.frame.origin.y
+                    let wFish = fish.frame.size.width
+                    let hfish = fish.frame.size.height
+                    fish.frame = CGRect(x: xEnd, y: yPos, width: wFish, height: hfish)
+                    fish.image = UIImage(named: "Dolphin")
+                }
+            } else {
+                for fish in fishArray {
+                    let xEnd = 0 - fish.frame.size.width
+                    let yPos = fish.frame.origin.y
+                    let wFish = fish.frame.size.width
+                    let hfish = fish.frame.size.height
+                    fish.frame = CGRect(x: xEnd, y: yPos, width: wFish, height: hfish)
+                    fish.image = UIImage(named: "Dolphin_flip")
+
+                }
+            }
+            
+            
+            
+        }, completion: { animationFinished in
+            
+            //fish.removeFromSuperview()
+            
+            if direction == .goLeft {
+                self.animateFishes(fishes: fishArray, direction: .goRight)
+
+            } else {
+                self.animateFishes(fishes: fishArray, direction: .goLeft)
+
+            }
+            
+        })
+        
     }
   }
 

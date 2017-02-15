@@ -76,6 +76,7 @@
                     <connections>
                         <outlet property="Kill" destination="RJF-at-Fw1" id="ILh-6d-ejb"/>
                         <outlet property="fishyz" destination="nyx-Kw-yY9" id="NOk-Wh-4Nl"/>
+                        <outlet property="seaweed4" destination="b5s-co-Zm6" id="89a-5n-bpb"/>
                         <outlet property="slider" destination="urC-n1-c5H" id="G84-5W-1iH"/>
                     </connections>
                 </viewController>
